@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+    <script src="../node_modules/vue-resource/dist/vue-resource.min.js"></script>
+    <script></script>
+    <script>
+        window.onload= function(){
+            new Vue({
+                el: '#box',
+                methods: {
+                    get: function(){
+                       this.$http.get('data.json',{
+                           a: 333,
+                           b: 333
+                       }).then(function(res){
+                            console.log(res.data)   
+                       })
+                   },
+                   post: function(){
+                       this.$http.post('data.json',{
+                           a: 333,
+                           b: 333
+                       },{
+                        emulateJSON: true
+                       }).then(function(res){
+                            console.log(res.data)   
+                       })
+                   },
+                   jsonp: function(){
+                       this.$http.jsonp('data.json',{
+                           a: 333,
+                           b: 333
+                       },{
+                           jsonp:'cb'
+                       }).then(function(res){
+                            console.log(res.data)   
+                       })
+                   }
+                }
+            })
+        }
+    </script>
+</head>
+
+<body>
+    <div id="box">
+        <input type="button" value="btn" @click="get()">
+    </div>
+</body>
+
+</html>

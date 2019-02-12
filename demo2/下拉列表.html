@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+    <script src="../node_modules/vue-resource/dist/vue-resource.min.js"></script>
+    <script></script>
+    <script>
+        window.onload= function(){
+            new Vue({
+                el: '#box',
+                data: {
+                    myData: [],
+                    t1: 'xxx'
+                },
+                methods: {
+                    search: function(){
+                        var key = this.t1;
+                        this.$http.jsonp('https://sug.so.360.cn/suggest',{
+                            word: '12',
+                            format: 'json',
+                            encodeout: 'utf-8'
+                        }).then(function(res){
+                            console.log(res.data.s);
+                        },function(err){
+                            console.log(err);
+                        })
+                    }
+                }
+            })
+        }
+    </script>
+</head>
+
+<body>
+    <div id="box">
+       <input type="text" v-model="t1" @keyup.enter="search()">
+       <ul>
+           <li v-for="item in myData">
+               {{item}}
+           </li>
+       </ul>
+       <p v-show="myData.length==0">暂无数据...</p>
+    </div>
+</body>
+
+</html>
