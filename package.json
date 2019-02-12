@@ -1,0 +1,23 @@
+{
+  "name": "vue-zns-demo",
+  "version": "1.0.0",
+  "description": "老潇demo ing! ==== 一片html代码配合上json,再new出来vue实例 更适合移动端项目 ==== 不兼容低版本IE ====",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/anysong/vue-zns-demo.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/anysong/vue-zns-demo/issues"
+  },
+  "homepage": "https://github.com/anysong/vue-zns-demo#readme",
+  "dependencies": {
+    "vue": "^1.0.21"
+  }
+}

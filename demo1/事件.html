@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+    <script>
+        window.onload= function(){
+            var c = new Vue({
+                el: '#box',
+                data: {
+                    msg: 'welcome vue',
+                    arr: ['aa','bb','cc'],
+                    json: {a: 'xx1', b: 'xx2', c: 'xx3'}
+                },
+                methods: {
+                    show: function(){
+                        this.arr.push('xxx')
+                    }
+                }
+            });
+        }
+    </script>
+</head>
+<body>
+    <div id="box">
+       <input type="button" value="btn" v-on:click="show()">
+       <br>
+       <ul>
+           <li v-for="value in arr">
+               {{value}}
+           </li>
+       </ul>
+    </div>
+</body>
+</html>

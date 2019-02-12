@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/twitter-bootstrap/3.4.0/css/bootstrap-theme.min.css">
+    <script src="https://cdn.bootcss.com/jquery/2.0.2/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/twitter-bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+    
+    <script>
+        window.onload= function(){
+            var c = new Vue({
+                el: '#box',
+                data: {
+                    msg: 'welcome vue',
+                    arr: ['aa','bb','cc'],
+                    json: {a: 'xx1', b: 'xx2', c: 'xx3'},
+                    flag: true
+                },
+                methods: {
+                    show: function(){
+                        this.flag = !this.flag;
+                    }
+                }
+            });
+        }
+    </script>
+</head>
+<body>
+    <div id="box">
+       <input type="button" value="btn" v-on:click="show()">
+       <br>
+       <div style="width:100px;height:100px;background: red;" v-show="flag">box</div>
+    </div>
+</body>
+</html>
