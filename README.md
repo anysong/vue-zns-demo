@@ -263,6 +263,46 @@
 =====================
     vue-router
     根据不同的url请求不同的组件
-
-
-
+    view:
+        <a v-link="{path:'/home'}">主页</a>
+        展示区域  <router-view></router-view>
+    
+    js:
+        //1. 准备根组件
+        //2. Home News组件准备
+        var App = Vue.extend();
+        var Home = Vue.extend({
+            template: '<div>Home</div>'
+        })
+        var News = Vue.extend({
+            template: '<div>News</div>'
+        })
+        //3. 准备路由
+        var router = new VueRouter();
+        //4. 关联
+        router.map({
+            'home': {
+                component: Home
+            },
+            'news': {
+                component: News
+            }
+        })
+        //5. 启动路由
+        router.start(App, '#box');
+========================
+    路由嵌套(多级路由)
+        subRoutes
+========================
+    路由信息
+    '/detail/:id'
+    {{$route.params | json}}
+    $route.params 路径
+    $route.query  
+========================
+    vue-loader
+    .vue 
+        \- template   html
+        \- style      css(less)
+        \- script     js(es6) babel
+=========================
