@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>tmp</title>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+    <template id="aaa">
+        <div @click="show">{{msg}}</div>
+        <bbb @child="get"></bbb>
+    </template>
+    <template id="bbb">
+        <div>bbb组件<div>
+        <button @click="send">bbbb</button>
+    </template>
+    <script>
+        //全局组件
+        window.onload = function () {
+            var vm = new Vue({
+                components: {
+                    aaa: {
+                        data() {
+                            return {
+                                msg: 'aaa组件'
+                            }
+                        },
+                        methods: {
+                            show(){
+                                // this.msg = 'uuuu';
+                            },
+                            get(msg){
+                                alert(msg);
+                                this.msg = msg;
+                            }
+                        },
+                        template: '#aaa',
+                        components: {
+                            'bbb': {
+                                props: {
+                                    m: String
+                                },
+                                data(){
+                                    return {
+                                        a: '子数据'
+                                    }
+                                },
+                                template: '#bbb',
+                                methods: {
+                                    send(){
+                                       this.$emit('child', this.a);
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }).$mount('#box')
+        }
+    </script>
+</head>
+
+<body>
+    <div id="box">
+        <aaa></aaa>
+    </div>
+</body>
+
+</html>
