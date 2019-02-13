@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+    <script src="../node_modules/vue-resource/dist/vue-resource.min.js"></script>
+
+    <style>
+        #div1 {
+            width: 100px;
+            height: 100px;
+            background: red;
+        }
+    </style>
+    <script>
+        window.onload= function(){
+            var vm = new Vue({
+                data: {
+                    sign: false,
+                    a: 12
+                },
+                methods: {
+                    toggle(){
+                        this.sign = !this.sign;
+                    }
+                }
+            }).$mount('#box')
+        }
+    </script>
+</head>
+
+<body>
+    <div id="box">
+       <input type="button" value="btn1" @click="toggle">
+       <div id="div1" v-show="sign"></div>
+    </div>
+</body>
+
+</html>

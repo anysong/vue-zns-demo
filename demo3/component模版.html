@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>tmp</title>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+    <script type="x-template" id="tmp">
+            <h3>{{msg}}</h3>
+    </script>
+    <template id="tmp2">
+            <h3>{{msg}}</h3>
+    </template>
+    <script>
+        //全局组件
+        window.onload= function(){
+            new Vue({
+                components: {
+                    aaa: {
+                        data(){
+                            return {
+                                msg: 'llllll#'
+                            }
+                        },
+                        template: '#tmp2'
+                    }
+                }
+            }).$mount('#box')
+        }
+    </script>
+</head>
+
+<body>
+    <div id="box">
+       <aaa></aaa>
+    </div>
+</body>
+
+</html>

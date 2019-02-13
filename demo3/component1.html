@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>com1</title>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+    <script src="../node_modules/vue-resource/dist/vue-resource.min.js"></script>
+
+    <style>
+        #div1 {
+            width: 100px;
+            height: 100px;
+            background: red;
+        }
+    </style>
+    <script>
+        window.onload= function(){
+            var Aaa = Vue.extend({
+                data(){
+                    return {
+                        msg: 'tt'
+                    };
+                },
+                methods:{
+                    show(){
+                        this.msg = 'finished';
+                    }
+                },
+                template: '<h3 @click="show">{{msg}}</h3>'
+            })
+            Vue.component('aaa', Aaa); 
+            new Vue({
+                data: {
+                    a: 12
+                }
+            }).$mount('#box')
+        }
+    </script>
+</head>
+
+<body>
+    <div id="box">
+       <aaa></aaa>
+    </div>
+</body>
+
+</html>

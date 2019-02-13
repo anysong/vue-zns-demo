@@ -139,7 +139,104 @@
         vm.$watch("数据名字", cb) //浅度
         vm.$watch("数据名字", cb, {deep: true}) //深度
 ===============
+    动画
+    vue-> 过度(动画)
+    transiton="fade"; 规定名称
+
+    install animate
+===============
     vue组件
-    slot
-    vue-loader
-    vue-router
+    定义一个组件法1:
+    (全局组件)
+        var Aaa = Vue.extend({
+            template: '<h3>333</h3>'
+        })
+        Vue.component('aaa',Aaa); 
+        *** 组件内放数据, data必须是函数的形式,函数必须返回一个对象(json); ***
+        var Aaa = Vue.extend({
+            data(){
+                return {
+                    msg: 'tt'
+                };
+            },
+            template: '<h3>{{msg}}</h3>'
+        })
+    (局部组件)
+         var Aaa = Vue.extend({
+            template: '<h3>{{msg}}</h3>'
+        })
+        new Vue({
+            data: {
+                a: 12
+            },
+            components: {
+                aaa: Aaa //局部组件
+            }
+        }).$mount('#box')
+
+    定义一个组件法2:
+    (全局)
+        Vue.component('aaa', {
+            data(){
+                return {
+                    msg: 'uuu8'
+                }
+            },
+            template: '<h3>{{msg}}</h3>'
+        }); //全局
+        new Vue({
+            data: {
+                a: 12
+            }
+        }).$mount('#box')
+    (局部)
+        new Vue({
+            data: {
+                a: 12
+            },
+            components: {
+                aaa: {
+                    data(){
+                        return {
+                            msg: 'uuu9'
+                        }
+                    },
+                    template: '<h3>{{msg}}</h3>'
+                }
+            }
+        }).$mount('#box')
+=================
+    template
+    法1:
+        <script type="x-template" id="tmp">
+            <h3>{{msg}}</h3>
+        </script>
+        new Vue({
+            components: {
+                aaa: {
+                    data(){
+                        return {
+                            msg: 'llllll'
+                        }
+                    },
+                    template: '#tmp'
+                }
+            }
+        }).$mount('#box')
+    法2:
+        <template id="tmp2">
+            <h3>{{msg}}</h3>
+        </template>
+===================
+    动态组件
+    <component :is="a"></component>
+===================
+vue-devtools 调试工具
+
+
+
+
+
+
+
+
