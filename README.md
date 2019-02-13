@@ -37,9 +37,14 @@
     style="" [] || {} || data内·书写  复合样式 驼峰命名法
 ============
     模板: 
-        {{msg}}
+        {{msg}}                v-text="msg" 防止网速慢出现花括号
         {{*msg}} 数据只绑定一次
-        {{{msg}}} html转译输出
+        {{{msg}}} html转译输出   v-html="msg" 防止网速慢出现花括号
+============
+    防止闪烁
+        v-cloak   大段落
+        v-text
+        v-html
 ============
     过滤器:
         {{msg|filterA|filterB}} 
@@ -47,7 +52,94 @@
         {{'abc'|lowercase}} 转为大写
         {{'abc'|capitalize}} 首字母大写
         {{12|currency '¥'}} 钱符号
+        {{{}|json}}  过滤json
 ============
     交互:
         如果vue想做交互,需要引入 vue-resource     this.$http   
         vue2.0之后，就不再对vue-resource更新，而是推荐使用axios。基于 Promise 的 HTTP 请求客户端，可同时在浏览器和 Node.js 中使用。 
+==============
+    生命周期:
+        钩子函数:
+            created -> 实例已经创建
+==============
+    计算属性:
+        computed里面可以防止一些业务代码,一定要return
+        computed: {
+            b: {
+                get: function(){
+                    return 1;
+                },
+                set: funcion(val){
+
+                }
+            }
+        }
+        //简写
+        computed: {
+            b: function(){
+                return 1;
+            }
+        }
+        值为函数返回值
+=============
+    实例
+    vm.$el       元素 el
+    vm.$data     数据 data
+    vm.$mount()  手动挂载
+    vm.$options  获取自定义属性
+    vm.$destroy  销毁对象
+    vm.$log      查看现在的数据状态
+    vm.$watch
+==============
+    循环
+     v-for 处理重复数据 加上索引 track-by="$index"  提高性能
+==============
+    过滤器
+        uppercase
+        capitalize
+        currency
+        debounce 配合事件,延迟执行
+    数据配合使用过滤器
+        limitBy 参数(取几个,从哪开始)
+        filterBy 过滤数据  参数(值)
+        orderBy 排序 1:正序 -1:倒序
+    自定义过滤器
+        //model -> view
+        Vue.filter(name, function(input, arg1, arg2 ...){
+            return input + 1;
+        })
+    双向过滤器
+        //model -> view -> model
+        //处理v-model
+        Vue.filter(name, {
+            read: function(input){
+                //model -> view
+                return input+1
+            },
+            write: function(val){
+                //view -> model
+            }
+        })
+=============
+    自定义属性指令
+        扩展了html语法
+        //调用时必须v-开头
+        Vue.directive('指令名称',function(val){
+            //val 为 v-color="val";传入
+            this.el => dom
+        })
+    自定义元素指令(用处不大)
+        <v-drag>22</v-drag>
+==============
+    自定义键盘信息 
+        //自定义‘ctrl’
+        Vue.directive('on').keyCodes.ctrl=17; 
+==============
+    监听数据变化
+        vm.$watch("数据名字", cb) //浅度
+        vm.$watch("数据名字", cb, {deep: true}) //深度
+===============
+    vue组件
+    slot
+    vue-loader
+    vue-router

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+    <script src="../node_modules/vue-resource/dist/vue-resource.min.js"></script>
+    <script></script>
+    <script>
+        window.onload= function(){
+            var vm = new Vue({
+                el: '#box',
+                data: {
+                    msg: 'well',
+                    a: 1
+                },
+                computed: {
+                    b: function(){
+                        return this.a + 102;
+                    }
+                }
+            })
+            console.log(vm.a);
+        }
+    </script>
+</head>
+
+<body>
+    <div id="box">
+        {{a}}
+        <br>
+        {{b}}
+    </div>
+</body>
+
+</html>

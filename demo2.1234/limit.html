@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+    <script src="../node_modules/vue-resource/dist/vue-resource.min.js"></script>
+    <script></script>
+    <script>
+        window.onload= function(){
+            var vm = new Vue({
+                data: {
+                    arr: ['a','a', 'b', 'c'],
+                    a: 12
+                }
+            }).$mount('#box')
+        }
+    </script>
+</head>
+
+<body>
+    <div id="box">
+        <ul>
+            <li v-for="item in arr|limitBy 2" track-by="$index">
+                {{item}}
+            </li> 
+        </ul>
+        <ul>
+            <li v-for="item in arr|filterBy 'c'" track-by="$index">
+                {{item}}
+            </li> 
+        </ul>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+    <script src="../node_modules/vue-resource/dist/vue-resource.min.js"></script>
+    <script></script>
+    <script>
+        window.onload= function(){
+            new Vue({
+                el: '#box',
+                data: {
+                    msg: 'well'
+                },
+                created: function(){
+                    alert('实例创建');
+                },
+                beforeCompile: function(){
+                    alert('编译之前');
+                },
+                compiled: function(){
+                    alert('编译之后');
+                },
+                ready: function(){
+                    alert('插入到文档中');
+                },
+                beforeDestroy: function(){
+                    alert('销毁之前')
+                },
+                destroyed: function(){
+                    alert('销毁')
+                }
+            })
+        }
+    </script>
+</head>
+
+<body>
+    <div id="box">
+        {{msg}}
+    </div>
+</body>
+
+</html>
